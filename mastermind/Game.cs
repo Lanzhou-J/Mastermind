@@ -9,7 +9,15 @@ namespace mastermind
 
         public Peg[] SelectSecretSolution()
         {
-            return new Peg[4];
+            var secretSolution = new Peg[4];
+            for (int i = 0; i < 4; i++)
+            {
+                var rand = new Random();
+                var randNumber = rand.Next(Colours.Length);
+                secretSolution[i] = new Peg(Colours[randNumber]);
+            }
+
+            return secretSolution;
         }
     }
 }
