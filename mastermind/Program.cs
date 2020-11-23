@@ -6,7 +6,12 @@ namespace mastermind
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var game = new Game();
+            var colours = game.Colours;
+            foreach (var item in colours)
+            {
+                Console.WriteLine(item);
+            }
         }
     }
 }
