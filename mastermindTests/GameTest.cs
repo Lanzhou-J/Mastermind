@@ -1,4 +1,4 @@
-using System;
+using mastermind;
 using Xunit;
 
 namespace mastermindTests
@@ -8,6 +8,8 @@ namespace mastermindTests
         [Fact]
         public void SelectSecretSolutionShould_ReturnArrayOfPegs_WhenColoursAreSet()
         {
+            var game = new Game();
+            var secretSolution = game.SelectSecretSolution();
             
         }
     }
