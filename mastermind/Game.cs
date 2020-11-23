@@ -4,7 +4,7 @@ namespace mastermind
     {
         public Peg[] SelectSecretSolution()
         {
-            return new Peg[];
+            return new Peg[4];
         }
     }
 }
