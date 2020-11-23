@@ -12,7 +12,6 @@ namespace mastermindTests
             var secretSolution = game.SelectSecretSolution();
             
             Assert.Equal(4, secretSolution.Length);
-            
         }
     }
 }
