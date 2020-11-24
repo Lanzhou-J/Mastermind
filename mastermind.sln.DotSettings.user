@@ -1,7 +1,7 @@
 ﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
 	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=5b5d36c8_002D3bea_002D4c8c_002D8eef_002D06141288747c/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" Name="SelectSecretSolutionShould_ReturnArrayOf4Pegs" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;
   &lt;TestAncestor&gt;
-    &lt;TestId&gt;xUnit::1572A6FE-2035-4596-81E1-1D93C317D718::.NETCoreApp,Version=v3.1::mastermindTests.GameTest.SelectSecretSolutionShould_ReturnArrayOf4Pegs&lt;/TestId&gt;
-    &lt;TestId&gt;xUnit::1572A6FE-2035-4596-81E1-1D93C317D718::.NETCoreApp,Version=v3.1::mastermindTests.GameTest.SelectSecretSolutionShould_ReturnArrayOf4Pegs_WithCorrectColour&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1572A6FE-2035-4596-81E1-1D93C317D718::.NETCoreApp,Version=v3.1::mastermindTests.MastermindTest.SelectSecretSolutionShould_ReturnArrayOf4Pegs&lt;/TestId&gt;
+    &lt;TestId&gt;xUnit::1572A6FE-2035-4596-81E1-1D93C317D718::.NETCoreApp,Version=v3.1::mastermindTests.MastermindTest.SelectSecretSolutionShould_ReturnArrayOf4Pegs_WithCorrectColour&lt;/TestId&gt;
   &lt;/TestAncestor&gt;
 &lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>
