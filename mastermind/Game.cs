@@ -33,13 +33,23 @@ namespace mastermind
         public void Start()
         {
             WelcomeUser();
+            DisplayInputRule();
+            DisplayAllowedColours();
+        }
+
+        private void DisplayAllowedColours()
+        {
+            Output.Write(Colours);
+        }
+
+        private void DisplayInputRule()
+        {
+            Output.Write(GameInstruction.DisplayInputRuleMessage());
         }
 
         private void WelcomeUser()
         {
-            Output.Write($"Welcome to Mastermind, {Player.Name}!");
-            Output.Write("Please select 4 colours from the colours below to pick and place your pegs in a row (colours can be duplicated):");
-            Output.Write(Colours);
+            Output.Write(GameInstruction.WelcomePlayerMessage(Player.Name));
         }
     }
 }
