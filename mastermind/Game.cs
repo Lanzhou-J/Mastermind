@@ -25,16 +25,39 @@ namespace mastermind
             return new[] {Colour.Red, Colour.Blue, Colour.Green, Colour.Orange, Colour.Purple, Colour.Yellow};
         }
 
-        // private Colour[] CollectUserInput()
-        // {
-        //
-        // }
-
         public void Start()
         {
             WelcomeUser();
             DisplayInputRule();
             DisplayAllowedColours();
+        }
+
+        public void Play()
+        {
+            var selection = CollectUserInput();
+            var selectedColours = GetSelectedColours(selection);
+            Output.Write(selectedColours);
+            Player.GenerateSolution(selectedColours);
+        }
+
+        public Colour[] GetSelectedColours(string selection)
+        {
+            var selectedColours = new Colour[4];
+
+            var index = 0;
+            foreach (var character in selection)
+            {
+                int number = character - '0';
+                selectedColours[index] = Colours[number - 1];
+                index++;
+            }
+
+            return selectedColours;
+        }
+
+        private string CollectUserInput()
+        {
+            return Input.Ask("Your selection:");
         }
 
         private void DisplayAllowedColours()
