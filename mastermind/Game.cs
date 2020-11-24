@@ -22,7 +22,7 @@ namespace mastermind
 
         private static Colour[] GetColours()
         {
-            return new Colour[] {Colour.Red, Colour.Blue, Colour.Green, Colour.Orange, Colour.Purple, Colour.Yellow};
+            return new[] {Colour.Red, Colour.Blue, Colour.Green, Colour.Orange, Colour.Purple, Colour.Yellow};
         }
 
         // private Colour[] CollectUserInput()
@@ -37,7 +37,9 @@ namespace mastermind
 
         private void WelcomeUser()
         {
-            Output.Output($"Welcome to Mastermind, {Player.Name}!");
+            Output.Write($"Welcome to Mastermind, {Player.Name}!");
+            Output.Write("Please select 4 colours from the colours below to pick and place your pegs in a row (colours can be duplicated):");
+            Output.Write(Colours);
         }
     }
 }
