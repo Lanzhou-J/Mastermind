@@ -32,12 +32,12 @@ namespace mastermind
 
         public void Start()
         {
-            Output.Output("Welcome to Mastermind, Lan!");
-            
+            WelcomeUser();
         }
 
-
-
-
+        private void WelcomeUser()
+        {
+            Output.Output($"Welcome to Mastermind, {Player.Name}!");
+        }
     }
 }

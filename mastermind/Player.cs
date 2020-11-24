@@ -7,7 +7,7 @@ namespace mastermind
             Name = name;
         }
 
-        private string Name { get; set; }
+        public string Name { get; set; }
         
 
         public Peg[] GenerateSolution(Colour[] colours)
