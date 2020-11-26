@@ -9,7 +9,7 @@ namespace mastermind
         
         public static string DisplayInputRuleMessage()
         {
-            return "Please select 4 colours from the colours below to pick and place your pegs in a row (colours can be duplicated):";
+            return "Please select 4 colours (index) from the colours below to pick and place your pegs in a row (colours can be duplicated):";
         }
     }
 }

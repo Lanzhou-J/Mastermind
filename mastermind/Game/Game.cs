@@ -31,16 +31,37 @@ namespace mastermind
             DisplayInputRule();
             DisplayAllowedColours();
         }
+        
+        private void DisplayAllowedColours()
+        {
+            Output.Write(Colours);
+        }
+        
+        private void DisplayInputRule()
+        {
+            Output.Write(GameInstruction.DisplayInputRuleMessage());
+        }
+        
+        private void WelcomeUser()
+        {
+            Output.Write(GameInstruction.WelcomePlayerMessage(Player.Name));
+        }
 
         public void Play()
         {
-            var selection = CollectUserInput();
-            var selectedColours = GetSelectedColours(selection);
+            var selectedColours = UserSelectColours();
             Output.Write(selectedColours);
             Player.GenerateSolution(selectedColours);
         }
 
-        public Colour[] GetSelectedColours(string selection)
+        public Colour[] UserSelectColours()
+        {
+            var selection = CollectUserInput();
+            var selectedColours = GetSelectedColours(selection);
+            return selectedColours;
+        }
+
+        private Colour[] GetSelectedColours(string selection)
         {
             var selectedColours = new Colour[4];
 
@@ -60,19 +81,10 @@ namespace mastermind
             return Input.Ask("Your selection:");
         }
 
-        private void DisplayAllowedColours()
-        {
-            Output.Write(Colours);
-        }
+        
 
-        private void DisplayInputRule()
-        {
-            Output.Write(GameInstruction.DisplayInputRuleMessage());
-        }
+        
 
-        private void WelcomeUser()
-        {
-            Output.Write(GameInstruction.WelcomePlayerMessage(Player.Name));
-        }
+        
     }
 }

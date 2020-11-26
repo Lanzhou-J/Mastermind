@@ -14,9 +14,10 @@ namespace mastermind
             var index = 1;
             foreach (var item in colours)
             {
-                Console.WriteLine(index+" "+item);
+                Console.Write(index+"."+item + " ");
                 index++;
             }
+            Console.WriteLine();
         }
     }
 }

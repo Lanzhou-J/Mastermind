@@ -13,6 +13,7 @@ namespace mastermind
             var game = new Game(player, mastermind, consoleInput, consoleOutput);
             
             game.Start();
+            game.Play();
         }
     }
 }
