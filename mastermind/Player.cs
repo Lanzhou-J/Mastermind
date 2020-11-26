@@ -12,7 +12,13 @@ namespace mastermind
 
         public Peg[] GenerateSolution(Colour[] colours)
         {
-            return new Peg[4];
+            var solution = new Peg[4];
+            for (int i = 0; i < 4; i++)
+            {
+                solution[i] = new Peg(colours[i]);
+            }
+
+            return solution;
         }
     }
 }
