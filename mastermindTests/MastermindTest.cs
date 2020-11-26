@@ -26,5 +26,17 @@ namespace mastermindTests
                 Assert.Contains(peg.Colour, _colours);
             }
         }
+
+        [Fact]
+        public void CreateHintBasedOnPlayerSolutionShould_CreateHintWith4KeyPegs_BasedOnPlayerSolution()
+        {
+            var mastermind = new Mastermind();
+            var peg1 = new Peg(Colour.Red);
+            var peg2 = new Peg(Colour.Blue);
+            var peg3 = new Peg(Colour.Green);
+            var peg4 = new Peg(Colour.Orange);
+            var solution = new[] {peg1, peg2, peg3, peg4};
+            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution)
+        }
     }
 }

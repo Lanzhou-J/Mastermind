@@ -12,6 +12,8 @@ namespace mastermind
             Output = output;
         }
 
+        private Peg[] _currentSolution;
+
         public Colour[] Colours { get; } =
             GetColours();
 
@@ -51,7 +53,7 @@ namespace mastermind
         {
             var selectedColours = UserSelectColours();
             Output.Write(selectedColours);
-            Player.GenerateSolution(selectedColours);
+            _currentSolution = Player.GenerateSolution(selectedColours);
         }
 
         public Colour[] UserSelectColours()
@@ -80,11 +82,5 @@ namespace mastermind
         {
             return Input.Ask("Your selection:");
         }
-
-        
-
-        
-
-        
     }
 }
