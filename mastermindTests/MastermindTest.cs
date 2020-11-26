@@ -47,7 +47,7 @@ namespace mastermindTests
         [Fact]
         public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHint_BasedOnPlayerSolution()
         {
-            var secretSolutionGenerator = new SecretSolutionGenerator();
+            var secretSolutionGenerator = new MockSecretSolutionGenerator();
             var mastermind = new Mastermind(secretSolutionGenerator);
             var peg1 = new Peg(Colour.Red);
             var peg2 = new Peg(Colour.Blue);
@@ -55,8 +55,29 @@ namespace mastermindTests
             var peg4 = new Peg(Colour.Orange);
             var solution = new[] {peg1, peg2, peg3, peg4};
             var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
-            
-            Assert.Equal(4, hint.Length);
+
+            foreach (var item in hint)
+            {
+                Assert.Equal(Value.Black, item.Value);
+            }
         }
+        
+        // [Fact]
+        // public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHintWithAllEmptyValues_BasedOnPlayerSolution()
+        // {
+        //     var secretSolutionGenerator = new MockSecretSolutionGenerator();
+        //     var mastermind = new Mastermind(secretSolutionGenerator);
+        //     var peg1 = new Peg(Colour.Yellow);
+        //     var peg2 = new Peg(Colour.Yellow);
+        //     var peg3 = new Peg(Colour.Yellow);
+        //     var peg4 = new Peg(Colour.Yellow);
+        //     var solution = new[] {peg1, peg2, peg3, peg4};
+        //     var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
+        //
+        //     foreach (var item in hint)
+        //     {
+        //         Assert.Equal(Value.Empty, item.Value);
+        //     }
+        // }
     }
 }

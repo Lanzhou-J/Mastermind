@@ -11,7 +11,7 @@ namespace mastermind
             SolutionGenerator = solutionGenerator;
         }
 
-        public IGenerateSolution SolutionGenerator { get; set; }
+        private IGenerateSolution SolutionGenerator { get; }
 
         public void SetSecretSolution(Colour[] colours)
         {
@@ -21,7 +21,12 @@ namespace mastermind
 
         public KeyPeg[] CreateHintBasedOnPlayerSolution(Peg[] solution)
         {
-            return new KeyPeg[4];
+            var keyPeg1 = new KeyPeg(Value.Black);
+            var keyPeg2 = new KeyPeg(Value.Black);
+            var keyPeg3 = new KeyPeg(Value.Black);
+            var keyPeg4 = new KeyPeg(Value.Black);
+            var hint = new[] {keyPeg1, keyPeg2, keyPeg3, keyPeg4};
+            return hint;
         }
     }
 }

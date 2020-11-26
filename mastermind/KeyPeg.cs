@@ -13,6 +13,6 @@ namespace mastermind
             Value = value;
         }
 
-        private Value Value { get; set; }
+        public Value Value { get; set; }
     }
 }
