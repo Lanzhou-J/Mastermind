@@ -16,5 +16,10 @@ namespace mastermind
 
             return secretSolution;
         }
+
+        public KeyPeg[] CreateHintBasedOnPlayerSolution(Peg[] solution)
+        {
+            return new KeyPeg[4];
+        }
     }
 }
