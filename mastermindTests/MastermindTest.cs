@@ -36,7 +36,9 @@ namespace mastermindTests
             var peg3 = new Peg(Colour.Green);
             var peg4 = new Peg(Colour.Orange);
             var solution = new[] {peg1, peg2, peg3, peg4};
-            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution)
+            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
+            
+            Assert.Equal(4, hint.Length);
         }
     }
 }

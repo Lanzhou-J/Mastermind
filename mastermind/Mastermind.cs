@@ -4,6 +4,7 @@ namespace mastermind
 {
     public class Mastermind
     {
+        private Peg[] _secretSolution;
         public Peg[] SelectSecretSolution(Colour[] colours)
         {
             var secretSolution = new Peg[4];
@@ -14,8 +15,11 @@ namespace mastermind
                 secretSolution[i] = new Peg(colours[randNumber]);
             }
 
+            _secretSolution = secretSolution;
+
             return secretSolution;
         }
+        
 
         public KeyPeg[] CreateHintBasedOnPlayerSolution(Peg[] solution)
         {
