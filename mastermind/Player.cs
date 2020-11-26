@@ -2,23 +2,20 @@ namespace mastermind
 {
     public class Player
     {
-        public Player(string name)
+        public Player(string name, IGenerateSolution solutionGenerator)
         {
             Name = name;
+            SolutionGenerator = solutionGenerator;
         }
+
+        private IGenerateSolution SolutionGenerator; 
 
         public string Name { get; set; }
         
 
         public Peg[] GenerateSolution(Colour[] colours)
         {
-            var solution = new Peg[4];
-            for (int i = 0; i < 4; i++)
-            {
-                solution[i] = new Peg(colours[i]);
-            }
-
-            return solution;
+            return SolutionGenerator.GenerateSolution(colours);
         }
     }
 }

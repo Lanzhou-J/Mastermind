@@ -8,7 +8,8 @@ namespace mastermindTests
         [Fact]
         public void GenerateSolutionShould_GeneratePegsBasedOnColours()
         {
-            Player player = new Player(name:"Lan");
+            var solutionGenerator = new NormalSolutionGenerator();
+            Player player = new Player(name:"Lan", solutionGenerator);
             Colour[] colours = new[] {Colour.Blue, Colour.Red, Colour.Blue, Colour.Red};
             var actualResult = player.GenerateSolution(colours);
 
