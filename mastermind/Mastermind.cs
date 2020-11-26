@@ -4,20 +4,18 @@ namespace mastermind
 {
     public class Mastermind
     {
-        private Peg[] _secretSolution;
-        public Peg[] SelectSecretSolution(Colour[] colours)
+        public Peg[] SecretSolution { get; private set; }
+
+        public Mastermind(IGenerateSolution solutionGenerator)
         {
-            var secretSolution = new Peg[4];
-            for (int i = 0; i < 4; i++)
-            {
-                var rand = new Random();
-                var randNumber = rand.Next(colours.Length);
-                secretSolution[i] = new Peg(colours[randNumber]);
-            }
+            SolutionGenerator = solutionGenerator;
+        }
 
-            _secretSolution = secretSolution;
+        public IGenerateSolution SolutionGenerator { get; set; }
 
-            return secretSolution;
+        public void SetSecretSolution(Colour[] colours)
+        {
+            SecretSolution = SolutionGenerator.GenerateSolution(colours);
         }
         
 

@@ -9,19 +9,21 @@ namespace mastermindTests
         [Fact]
         public void SelectSecretSolutionShould_ReturnArrayOf4Pegs()
         {
-            var mastermind = new Mastermind();
-            var secretSolution = mastermind.SelectSecretSolution(_colours);
+            var secretSolutionGenerator = new SecretSolutionGenerator();
+            var mastermind = new Mastermind(secretSolutionGenerator);
+            mastermind.SetSecretSolution(_colours);
             
-            Assert.Equal(4, secretSolution.Length);
+            Assert.Equal(4, mastermind.SecretSolution.Length);
         }
         
         [Fact]
         public void SelectSecretSolutionShould_ReturnArrayOf4Pegs_WithCorrectColour()
         {
-            var mastermind = new Mastermind();
-            var secretSolution = mastermind.SelectSecretSolution(_colours);
+            var secretSolutionGenerator = new SecretSolutionGenerator();
+            var mastermind = new Mastermind(secretSolutionGenerator);
+            mastermind.SetSecretSolution(_colours);
 
-            foreach (var peg in secretSolution)
+            foreach (var peg in mastermind.SecretSolution)
             {
                 Assert.Contains(peg.Colour, _colours);
             }
@@ -30,7 +32,23 @@ namespace mastermindTests
         [Fact]
         public void CreateHintBasedOnPlayerSolutionShould_CreateHintWith4KeyPegs_BasedOnPlayerSolution()
         {
-            var mastermind = new Mastermind();
+            var secretSolutionGenerator = new SecretSolutionGenerator();
+            var mastermind = new Mastermind(secretSolutionGenerator);
+            var peg1 = new Peg(Colour.Red);
+            var peg2 = new Peg(Colour.Blue);
+            var peg3 = new Peg(Colour.Green);
+            var peg4 = new Peg(Colour.Orange);
+            var solution = new[] {peg1, peg2, peg3, peg4};
+            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
+            
+            Assert.Equal(4, hint.Length);
+        }
+        
+        [Fact]
+        public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHint_BasedOnPlayerSolution()
+        {
+            var secretSolutionGenerator = new SecretSolutionGenerator();
+            var mastermind = new Mastermind(secretSolutionGenerator);
             var peg1 = new Peg(Colour.Red);
             var peg2 = new Peg(Colour.Blue);
             var peg3 = new Peg(Colour.Green);
