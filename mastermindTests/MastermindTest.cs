@@ -104,6 +104,7 @@ namespace mastermindTests
         {
             var secretSolutionGenerator = new MockSecretSolutionGenerator();
             var mastermind = new Mastermind(secretSolutionGenerator);
+            mastermind.SetSecretSolution(_colours);
             var peg1 = new Peg(Colour.Yellow);
             var peg2 = new Peg(Colour.Red);
             var peg3 = new Peg(Colour.Yellow);
