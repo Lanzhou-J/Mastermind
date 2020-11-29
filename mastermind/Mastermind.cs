@@ -31,9 +31,13 @@ namespace mastermind
 
             if (solution == null) return hint;
             if (SecretSolution == null) return hint;
-            if (solution[0].Colour == SecretSolution[0].Colour)
+
+            for (int i = 0; i < solution.Length; i++)
             {
-                keyPeg1.Value = Value.Black;
+                if (solution[i].Colour == SecretSolution[i].Colour)
+                {
+                    hint[i].Value = Value.Black;
+                }
             }
             return hint;
         }
