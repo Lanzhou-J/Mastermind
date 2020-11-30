@@ -15,6 +15,7 @@ namespace mastermind
         }
 
         private Peg[] _currentSolution;
+        public int GuessCount = 0;
         private Colour[] Colours { get; } =
             GetColours();
 
@@ -59,6 +60,7 @@ namespace mastermind
                 Output.Write(" ");
                 DisplayAllowedColours();
                 var selectedColours = UserSelectColours();
+                GuessCount += 1;
                 
                 _currentSolution = Player.GenerateSolution(selectedColours);
                 Output.Write(_currentSolution);

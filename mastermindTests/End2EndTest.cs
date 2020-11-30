@@ -20,6 +20,7 @@ namespace mastermindTests
             game.Start();
             game.Play();
             Assert.True(player.IsWinner);
+            Assert.Equal(3, game.GuessCount);
         }
         
     }
