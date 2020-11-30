@@ -2,9 +2,10 @@ using System.Linq;
 
 namespace mastermind
 {
-    public static class Rule
+    public class Rule: IRule
     {
-        public static bool IsWinningCondition(KeyPeg[] hint)
+
+        public bool IsWinningCondition(KeyPeg[] hint)
         {
             return hint.All(item => item.Value == Value.Black);
         }
