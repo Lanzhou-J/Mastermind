@@ -24,7 +24,10 @@ namespace mastermind
         {
             foreach (var item in keyPegs)
             {
-                Console.Write( item.Value + "  ");
+                if (item.Value != Value.Empty)
+                {
+                    Console.Write( item.Value + "  ");
+                }
             }
             Console.WriteLine();
         }

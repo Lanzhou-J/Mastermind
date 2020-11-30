@@ -21,5 +21,22 @@ namespace mastermind
         {
             return "Your selection:";
         }
+        
+        public static string InvalidColourMessage()
+        {
+            return "you have given an invalid colour!";
+        }
+        
+        public static string InvalidInputLengthMessage()
+        {
+            return "you must pass 4 colours!";
+        }
+        
+        public static string TooMoreTriesMessage()
+        {
+            return "you have more than 60 tries!";
+        }
+        
+        
     }
 }
