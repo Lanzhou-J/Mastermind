@@ -15,7 +15,7 @@ namespace mastermind
 
         private Peg[] _currentSolution;
 
-        public Colour[] Colours { get; } =
+        private Colour[] Colours { get; } =
             GetColours();
 
         private Player Player { get; set; }

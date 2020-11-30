@@ -48,16 +48,17 @@ namespace mastermind
         private void SetEachKeyPegValueInHint(Peg[] solution, KeyPeg[] hint)
         {
             var flagList = new List<int>();
-            
+
+            SetBlackKeyPegs(solution, hint, flagList);
+            SetWhiteKeyPegs(solution, hint, flagList);
+        }
+
+        private void SetWhiteKeyPegs(Peg[] solution, KeyPeg[] hint, List<int> flagList)
+        {
             for (var i = 0; i < solution.Length; i++)
             {
-                if (solution[i].Colour == SecretSolution[i].Colour)
-                {
-                    hint[i].Value = Value.Black;
-                    flagList.Add(i);
-                }
-
-                for(var j = 0; j< SecretSolution.Length; j++)
+                if (flagList.Contains(i)) continue;
+                for (var j = 0; j < SecretSolution.Length; j++)
                 {
                     if (flagList.Contains(j)) continue;
                     if (solution[i].Colour == SecretSolution[j].Colour)
@@ -65,6 +66,16 @@ namespace mastermind
                         hint[i].Value = Value.White;
                     }
                 }
+            }
+        }
+
+        private void SetBlackKeyPegs(Peg[] solution, KeyPeg[] hint, List<int> flagList)
+        {
+            for (var i = 0; i < solution.Length; i++)
+            {
+                if (solution[i].Colour != SecretSolution[i].Colour) continue;
+                hint[i].Value = Value.Black;
+                flagList.Add(i);
             }
         }
 
