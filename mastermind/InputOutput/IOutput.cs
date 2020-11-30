@@ -5,5 +5,7 @@ namespace mastermind
         void Write(string message);
 
         void Write(Colour[] colours);
+        
+        void Write(KeyPeg[] keyPegs);
     }
 }

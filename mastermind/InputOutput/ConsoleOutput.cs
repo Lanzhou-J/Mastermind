@@ -19,5 +19,14 @@ namespace mastermind
             }
             Console.WriteLine();
         }
+
+        public void Write(KeyPeg[] keyPegs)
+        {
+            foreach (var item in keyPegs)
+            {
+                Console.Write( item.Value + " ");
+            }
+            Console.WriteLine();
+        }
     }
 }

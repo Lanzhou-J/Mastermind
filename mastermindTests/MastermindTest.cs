@@ -45,6 +45,25 @@ namespace mastermindTests
         }
         
         [Fact]
+        public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHintWithAllEmptyValues_BasedOnPlayerSolution()
+        {
+            var secretSolutionGenerator = new MockSecretSolutionGenerator();
+            var mastermind = new Mastermind(secretSolutionGenerator);
+            mastermind.SetSecretSolution(_colours);
+            var peg1 = new Peg(Colour.Yellow);
+            var peg2 = new Peg(Colour.Yellow);
+            var peg3 = new Peg(Colour.Yellow);
+            var peg4 = new Peg(Colour.Yellow);
+            var solution = new[] {peg1, peg2, peg3, peg4};
+            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
+        
+            foreach (var item in hint)
+            {
+                Assert.Equal(Value.Empty, item.Value);
+            }
+        }
+        
+        [Fact]
         public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHint_BasedOnPlayerSolution()
         {
             var secretSolutionGenerator = new MockSecretSolutionGenerator();
@@ -78,25 +97,6 @@ namespace mastermindTests
             Assert.Equal(Value.Black, hint[1].Value);
             Assert.Equal(Value.Empty, hint[2].Value);
             Assert.Equal(Value.Empty, hint[3].Value);
-        }
-        
-        [Fact]
-        public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHintWithAllEmptyValues_BasedOnPlayerSolution()
-        {
-            var secretSolutionGenerator = new MockSecretSolutionGenerator();
-            var mastermind = new Mastermind(secretSolutionGenerator);
-            mastermind.SetSecretSolution(_colours);
-            var peg1 = new Peg(Colour.Yellow);
-            var peg2 = new Peg(Colour.Yellow);
-            var peg3 = new Peg(Colour.Yellow);
-            var peg4 = new Peg(Colour.Yellow);
-            var solution = new[] {peg1, peg2, peg3, peg4};
-            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
-        
-            foreach (var item in hint)
-            {
-                Assert.Equal(Value.Empty, item.Value);
-            }
         }
         
         [Fact]
@@ -135,6 +135,25 @@ namespace mastermindTests
             Assert.Equal(Value.White, hint[1].Value);
             Assert.Equal(Value.Black, hint[2].Value);
             Assert.Equal(Value.Black, hint[3].Value);
+        }
+        
+        [Fact]
+        public void CreateHintBasedOnPlayerSolutionShould_CreateCorrectHintWithOneBlackKeyPeg_BasedOnPlayerSolution()
+        {
+            var secretSolutionGenerator = new MockSecretSolutionGenerator();
+            var mastermind = new Mastermind(secretSolutionGenerator);
+            mastermind.SetSecretSolution(_colours);
+            var peg1 = new Peg(Colour.Red);
+            var peg2 = new Peg(Colour.Red);
+            var peg3 = new Peg(Colour.Red);
+            var peg4 = new Peg(Colour.Red);
+            var solution = new[] {peg1, peg2, peg3, peg4};
+            var hint = mastermind.CreateHintBasedOnPlayerSolution(solution);
+            
+            Assert.Equal(Value.Black, hint[0].Value);
+            Assert.Equal(Value.Empty, hint[1].Value);
+            Assert.Equal(Value.Empty, hint[2].Value);
+            Assert.Equal(Value.Empty, hint[3].Value);
         }
     }
 }

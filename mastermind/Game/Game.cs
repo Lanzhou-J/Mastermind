@@ -1,4 +1,5 @@
 using System;
+using System.Runtime.CompilerServices;
 
 namespace mastermind
 {
@@ -31,7 +32,7 @@ namespace mastermind
         {
             WelcomeUser();
             DisplayInputRule();
-            DisplayAllowedColours();
+            Mastermind.SetSecretSolution(Colours);
         }
         
         private void DisplayAllowedColours()
@@ -51,9 +52,16 @@ namespace mastermind
 
         public void Play()
         {
-            var selectedColours = UserSelectColours();
-            Output.Write(selectedColours);
-            _currentSolution = Player.GenerateSolution(selectedColours);
+            while (true)
+            {
+                Output.Write(" ");
+                DisplayAllowedColours();
+                var selectedColours = UserSelectColours();
+                Output.Write(selectedColours);
+                _currentSolution = Player.GenerateSolution(selectedColours);
+                var shuffledHint = Mastermind.CreateShuffledHintBasedOnPlayerSolution(_currentSolution);
+                Output.Write(shuffledHint);
+            }
         }
 
         public Colour[] UserSelectColours()
