@@ -5,12 +5,13 @@ namespace mastermind
 {
     public class Game
     {
-        public Game(Player player, Mastermind mastermind, IInput input, IOutput output)
+        public Game(Player player, Mastermind mastermind, IInput input, IOutput output, IRule rule)
         {
             Player = player;
             Mastermind = mastermind;
             Input = input;
             Output = output;
+            Rule = rule;
         }
 
         private Peg[] _currentSolution;
@@ -22,6 +23,7 @@ namespace mastermind
         private Mastermind Mastermind { get; set; }
         private IInput Input { get; set; }
         private IOutput Output { get; set; }
+        private IRule Rule { get; set; }
 
         private static Colour[] GetColours()
         {
@@ -52,7 +54,8 @@ namespace mastermind
 
         public void Play()
         {
-            while (true)
+            var isWinning = false;
+            while (!isWinning)
             {
                 Output.Write(" ");
                 DisplayAllowedColours();
@@ -61,7 +64,9 @@ namespace mastermind
                 _currentSolution = Player.GenerateSolution(selectedColours);
                 var shuffledHint = Mastermind.CreateShuffledHintBasedOnPlayerSolution(_currentSolution);
                 Output.Write(shuffledHint);
+                isWinning = Rule.IsWinningCondition(shuffledHint);
             }
+            Output.Write("You won!");
         }
 
         public Colour[] UserSelectColours()

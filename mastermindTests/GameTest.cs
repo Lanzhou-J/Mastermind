@@ -14,7 +14,8 @@ namespace mastermindTests
             var player = new Player("Lan", solutionGenerator);
             var secretSolutionGenerator = new SecretSolutionGenerator();
             var mastermind = new Mastermind(secretSolutionGenerator);
-            var game = new Game(player, mastermind, testInput, output);
+            var rule = new Rule();
+            var game = new Game(player, mastermind, testInput, output, rule);
 
             var expectedResult = new Colour[] {Colour.Red, Colour.Red, Colour.Red, Colour.Red};
             var actualResult = game.UserSelectColours();

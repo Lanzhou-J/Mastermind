@@ -12,7 +12,8 @@ namespace mastermind
             var player = new Player("Lan", solutionGenerator);
             var secretSolutionGenerator = new SecretSolutionGenerator();
             var mastermind = new Mastermind(secretSolutionGenerator);
-            var game = new Game(player, mastermind, consoleInput, consoleOutput);
+            var rule = new Rule();
+            var game = new Game(player, mastermind, consoleInput, consoleOutput, rule);
             
             game.Start();
             game.Play();
