@@ -24,7 +24,16 @@ namespace mastermind
         {
             foreach (var item in keyPegs)
             {
-                Console.Write( item.Value + " ");
+                Console.Write( item.Value + "  ");
+            }
+            Console.WriteLine();
+        }
+        
+        public void Write(Peg[] pegs)
+        {
+            foreach (var item in pegs)
+            {
+                Console.Write( item.Colour + "  ");
             }
             Console.WriteLine();
         }

@@ -15,7 +15,6 @@ namespace mastermind
         }
 
         private Peg[] _currentSolution;
-
         private Colour[] Colours { get; } =
             GetColours();
 
@@ -60,13 +59,16 @@ namespace mastermind
                 Output.Write(" ");
                 DisplayAllowedColours();
                 var selectedColours = UserSelectColours();
-                Output.Write(selectedColours);
+                
                 _currentSolution = Player.GenerateSolution(selectedColours);
+                Output.Write(_currentSolution);
                 var shuffledHint = Mastermind.CreateShuffledHintBasedOnPlayerSolution(_currentSolution);
                 Output.Write(shuffledHint);
                 isWinning = Rule.IsWinningCondition(shuffledHint);
             }
-            Output.Write("You won!");
+
+            Player.IsWinner = true;
+            Output.Write(GameInstruction.YouWonMessage());
         }
 
         public Colour[] UserSelectColours()
@@ -83,17 +85,16 @@ namespace mastermind
             var index = 0;
             foreach (var character in selection)
             {
-                int number = character - '0';
+                var number = character - '0';
                 selectedColours[index] = Colours[number - 1];
                 index++;
             }
-
             return selectedColours;
         }
 
         private string CollectUserInput()
         {
-            return Input.Ask("Your selection:");
+            return Input.Ask(GameInstruction.YourSelectionMessage());
         }
     }
 }

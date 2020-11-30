@@ -7,5 +7,7 @@ namespace mastermind
         void Write(Colour[] colours);
         
         void Write(KeyPeg[] keyPegs);
+        
+        void Write(Peg[] Pegs);
     }
 }
