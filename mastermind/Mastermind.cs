@@ -27,6 +27,12 @@ namespace mastermind
             if (solution == null) return hint;
             if (SecretSolution == null) return hint;
 
+            SetEachKeyPegValueInHint(solution, hint);
+            return hint;
+        }
+
+        private void SetEachKeyPegValueInHint(Peg[] solution, KeyPeg[] hint)
+        {
             for (var i = 0; i < solution.Length; i++)
             {
                 foreach (var item in SecretSolution)
@@ -35,13 +41,13 @@ namespace mastermind
                     {
                         hint[i].Value = Value.White;
                     }
+
                     if (solution[i].Colour == SecretSolution[i].Colour)
                     {
                         hint[i].Value = Value.Black;
                     }
                 }
             }
-            return hint;
         }
 
         private static KeyPeg[] CreateHintWith4EmptyKeyPegs()
