@@ -14,9 +14,17 @@ namespace mastermind
             var mastermind = new Mastermind(secretSolutionGenerator);
             var rule = new Rule();
             var game = new Game(player, mastermind, consoleInput, consoleOutput, rule);
-            
-            game.Start();
-            game.Play();
+            try
+            {
+                game.Start();
+                game.Play();
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                throw;
+            }
+           
         }
     }
 }

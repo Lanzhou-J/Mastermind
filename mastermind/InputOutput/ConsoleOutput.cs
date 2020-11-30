@@ -30,6 +30,7 @@ namespace mastermind
                 }
             }
             Console.WriteLine();
+            Console.WriteLine();
         }
         
         public void Write(Peg[] pegs)

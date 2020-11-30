@@ -12,8 +12,11 @@ namespace mastermind
             Input = input;
             Output = output;
             Rule = rule;
+            _inputValidator = new InputValidator();
+
         }
 
+        private readonly IValidateInput _inputValidator;
         private Peg[] _currentSolution;
         public int GuessCount = 0;
         private Colour[] Colours { get; } =
@@ -58,8 +61,8 @@ namespace mastermind
             while (!isWinning)
             {
                 GuessCount += 1;
-                ThrowExceptionWhenGuessMoreThan60Times();
-                Output.Write(" ");
+                _inputValidator.ThrowExceptionWhenTriedTooManyTimes(GuessCount);
+                
                 DisplayAllowedColours();
                 var selectedColours = UserSelectColours();
                 _currentSolution = Player.GenerateSolution(selectedColours);
@@ -72,14 +75,6 @@ namespace mastermind
             Output.Write(GameInstruction.YouWonMessage());
         }
 
-        private void ThrowExceptionWhenGuessMoreThan60Times()
-        {
-            if (GuessCount > 60)
-            {
-                throw new Exception(GameInstruction.TooMoreTriesMessage());
-            }
-        }
-
         public Colour[] UserSelectColours()
         {
             var selection = CollectUserInput();
@@ -89,7 +84,7 @@ namespace mastermind
 
         private Colour[] GetSelectedColours(string selection)
         {
-            ThrowExceptionWhenInputLengthIsNotFour(selection);
+            _inputValidator.ThrowExceptionWhenInputLengthIsNotFour(selection);
 
             var selectedColours = new Colour[4];
 
@@ -97,32 +92,11 @@ namespace mastermind
             foreach (var character in selection)
             {
                 var number = character - '0';
-                ThrowExceptionWhenSelectedColourIsInvalid(number);
+                _inputValidator.ThrowExceptionWhenSelectedColourIsInvalid(number, Colours.Length);
                 selectedColours[index] = Colours[number - 1];
                 index++;
             }
             return selectedColours;
-        }
-
-        private void ThrowExceptionWhenSelectedColourIsInvalid(int number)
-        {
-            if (number < 0 || number > Colours.Length)
-            {
-                throw new Exception(GameInstruction.InvalidColourMessage());
-            }
-        }
-
-        private static void ThrowExceptionWhenInputLengthIsNotFour(string selection)
-        {
-            if (selection.Length != 4)
-            {
-                throw new Exception(GameInstruction.InvalidInputLengthMessage());
-            }
-        }
-
-        private void ThrowExceptionIfColourSelectedIsInvalid(int number)
-        {
-            
         }
 
         private string CollectUserInput()
